@@ -63,6 +63,6 @@ public:
                     ans = ans.size()>x.size()?ans:x;
             }
         }
-        return ans+"";
+        return ans;
     }
 };
