@@ -21,6 +21,6 @@ public:
   }
     
   void reset() {
-    wave++;   
+    wave+=2;   
   }
 };
