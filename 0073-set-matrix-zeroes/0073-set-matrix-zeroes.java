@@ -3,33 +3,31 @@ class Solution {
    
     public void setZeroes(int[][] matrix) {
         
+        int[] x = new int[matrix.length];
+        int[] y = new int[matrix[0].length];
+        Arrays.fill(x,0);
+        Arrays.fill(y,0);
         
-      for(int i=0;i<matrix.length;i++){
-          for(int j=0;j<matrix[0].length;j++){
-              if(matrix[i][j] == 0){
-                  int x = i;
-                  int y = j;
-                  for(int p=0;p<matrix[0].length;p++){
-                        if(matrix[x][p]!=0){
-                            matrix[x][p] = 'p';
-                        }
-                    }
-                  
-                  for(int q=0;q<matrix.length;q++){
-                      if(matrix[q][y]!=0){
-                          matrix[q][y] = 'p';
-                      }
-                  }
-                  
-              }
-          }
-      }
+        
+        
+        
+        for(int i=0;i<matrix.length;i++){
+           for(int j=0;j<matrix[0].length;j++){
+               if(matrix[i][j] == 0){
+                   x[i] = 1;
+                   y[j] = 1;
+               }
+           }
+        }
+        
         for(int i=0;i<matrix.length;i++){
             for(int j=0;j<matrix[0].length;j++){
-                if(matrix[i][j] == 'p'){
+                if((x[i]==1 || y[j]==1) && matrix[i][j]!=0){
                     matrix[i][j] = 0;
-                }   
+                }
             }
         }
+        
+     
     }
 }
