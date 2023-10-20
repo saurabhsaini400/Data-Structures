@@ -1,20 +1,23 @@
 import java.math.BigInteger;
 class Solution {
-    BigInteger fact(int n){
-        BigInteger res = BigInteger.ONE;
-        for(int i=1;i<=n;i++){
-            res = res.multiply(BigInteger.valueOf(i));
+    int fact(int n, int r){
+        int ans =1;
+        for(int i=0;i<r;i++){
+            ans = ans * (n-i);
+            ans = ans /((i+1));
         }
-        return res;
+        return ans;
     }
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
         
         for(int i=0;i<numRows;i++){
+            Integer ans = 0;
             List<Integer> p = new ArrayList<>();
             for(int j=0;j<=i;j++){
-                BigInteger r = fact(i).divide(fact(i-j).multiply(fact(j)));
-                p.add(r.intValue());
+                
+                ans =(Integer) fact(i, Math.min(j, i-j));
+                p.add(ans);
             }
             result.add(p);
         }
